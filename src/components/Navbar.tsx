@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
+import ThemeToggle from "./ThemeToggle";
+import SearchBar from "./SearchBar";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -16,25 +18,24 @@ export default function Navbar() {
           AskAnon
         </Link>
 
+        <div className="hidden sm:flex flex-1 max-w-xs mx-6">
+          <SearchBar />
+        </div>
+
         <div className="flex items-center gap-4 text-sm">
           <Link
             href="/questions"
-            className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+            className="hidden sm:block text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
           >
             Questions
           </Link>
           <Link
             href="/leaderboard"
-            className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+            className="hidden sm:block text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
           >
             Leaderboard
           </Link>
-          <Link
-            href="/search"
-            className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
-          >
-            Search
-          </Link>
+          <ThemeToggle />
 
           {session ? (
             <>
