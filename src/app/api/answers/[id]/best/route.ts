@@ -3,6 +3,8 @@ import { auth } from "@/lib/auth";
 import { connectDB } from "@/lib/db";
 import Answer from "@/models/Answer";
 import Question from "@/models/Question";
+import User from "@/models/User";
+import { REPUTATION } from "@/lib/reputation";
 import mongoose from "mongoose";
 
 export async function PUT(
@@ -40,14 +42,31 @@ export async function PUT(
       );
     }
 
-    // Unmark any existing best answer for this question
+    // Revoke reputation from any previously marked best answer
+    const prevBest = await Answer.findOne({
+      questionId: answer.questionId,
+      isBestAnswer: true,
+    });
+    if (prevBest && prevBest._id.toString() !== answerId) {
+      await User.findByIdAndUpdate(prevBest.authorId, {
+        $inc: { reputation: -REPUTATION.BEST_ANSWER },
+      });
+    }
+
     await Answer.updateMany(
       { questionId: answer.questionId, isBestAnswer: true },
       { isBestAnswer: false },
     );
 
-    answer.isBestAnswer = !answer.isBestAnswer;
+    const wasAlreadyBest = prevBest?._id.toString() === answerId;
+    answer.isBestAnswer = !wasAlreadyBest;
     await answer.save();
+
+    if (answer.isBestAnswer) {
+      await User.findByIdAndUpdate(answer.authorId, {
+        $inc: { reputation: REPUTATION.BEST_ANSWER },
+      });
+    }
 
     return NextResponse.json({ answer });
   } catch {
