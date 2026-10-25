@@ -5,6 +5,7 @@ import Question from "@/models/Question";
 import { QuestionVote } from "@/models/Vote";
 import User from "@/models/User";
 import mongoose from "mongoose";
+import { checkVoteRateLimit, logSuspiciousVoting } from "@/lib/rateLimiter";
 
 export async function POST(
   req: NextRequest,
@@ -44,6 +45,15 @@ export async function POST(
       return NextResponse.json(
         { error: "Cannot vote on your own question" },
         { status: 400 },
+      );
+    }
+
+    const { allowed } = checkVoteRateLimit(session.user.id);
+    if (!allowed) {
+      logSuspiciousVoting(session.user.id, questionId);
+      return NextResponse.json(
+        { error: "Rate limit exceeded. Max 20 votes per hour." },
+        { status: 429 },
       );
     }
 
