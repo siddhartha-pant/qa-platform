@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { connectDB } from "@/lib/db";
 import Question from "@/models/Question";
+import User from "@/models/User";
 import { questionSchema } from "@/lib/validation";
 
 export async function POST(req: NextRequest) {
@@ -27,6 +28,10 @@ export async function POST(req: NextRequest) {
     const question = await Question.create({
       ...parsed.data,
       authorId: session.user.id,
+    });
+
+    await User.findByIdAndUpdate(session.user.id, {
+      $inc: { questionCount: 1 },
     });
 
     const populated = await question.populate("authorId", "username avatarUrl");

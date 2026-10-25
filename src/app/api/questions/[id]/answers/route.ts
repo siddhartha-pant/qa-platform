@@ -51,7 +51,14 @@ export async function POST(
       questionId,
     });
 
-    await Question.findByIdAndUpdate(questionId, { $inc: { answerCount: 1 } });
+    await Promise.all([
+      Question.findByIdAndUpdate(questionId, { $inc: { answerCount: 1 } }),
+      // Import User inline to avoid circular dependency
+      (await import("@/models/User")).default.findByIdAndUpdate(
+        session.user.id,
+        { $inc: { answerCount: 1 } },
+      ),
+    ]);
 
     const populated = await answer.populate(
       "authorId",
