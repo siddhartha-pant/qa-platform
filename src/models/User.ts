@@ -7,7 +7,10 @@ export interface IUser extends Document {
   avatarUrl?: string;
   bio?: string;
   website?: string;
+  location?: string;
   reputation: number;
+  questionCount: number;
+  answerCount: number;
   joinedAt: Date;
   lastLogin?: Date;
 }
@@ -33,7 +36,10 @@ const UserSchema = new Schema<IUser>(
     avatarUrl: { type: String },
     bio: { type: String, maxlength: 200 },
     website: { type: String },
+    location: { type: String, maxlength: 100 },
     reputation: { type: Number, default: 0 },
+    questionCount: { type: Number, default: 0 },
+    answerCount: { type: Number, default: 0 },
     joinedAt: { type: Date, default: Date.now },
     lastLogin: { type: Date },
   },
