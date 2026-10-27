@@ -23,8 +23,9 @@ export async function GET(req: NextRequest) {
     const textFilter = { $text: { $search: query } };
     const filter = tag ? { ...textFilter, tags: tag } : textFilter;
 
-    const sortMap: Record<string, Record<string, number>> = {
-      relevance: { score: { $meta: "textScore" } as unknown as number },
+    type SortSpec = { [key: string]: 1 | -1 | { $meta: string } };
+    const sortMap: Record<string, SortSpec> = {
+      relevance: { score: { $meta: "textScore" } },
       newest: { createdAt: -1 },
       "most-voted": { voteScore: -1 },
     };
@@ -36,7 +37,8 @@ export async function GET(req: NextRequest) {
         filter,
         sort === "relevance" ? { score: { $meta: "textScore" } } : {},
       )
-        .sort(sortQuery)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .sort(sortQuery as any)
         .skip((page - 1) * limit)
         .limit(limit)
         .populate("authorId", "username avatarUrl")

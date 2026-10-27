@@ -30,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Navbar />
           <main className="flex-1">{children}</main>
           <footer className="border-t border-zinc-200 dark:border-zinc-800 py-6 text-center text-sm text-zinc-400">
-            © {new Date().getFullYear()} AskAnon. Built with Next.js & MongoDB.
+            © 2026 AskAnon. Built with Next.js & MongoDB.
           </footer>
         </Providers>
       </body>

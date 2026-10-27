@@ -29,7 +29,7 @@ export const questionSchema = z.object({
     .array(z.string().min(1).max(30))
     .min(1, "At least one tag required")
     .max(5, "Max 5 tags"),
-  isAnonymous: z.boolean().default(false),
+  isAnonymous: z.boolean(),
 });
 
 export const answerSchema = z.object({
@@ -37,7 +37,7 @@ export const answerSchema = z.object({
     .string()
     .min(10, "Answer must be at least 10 characters")
     .max(10000),
-  isAnonymous: z.boolean().default(false),
+  isAnonymous: z.boolean(),
 });
 
 export const voteSchema = z.object({

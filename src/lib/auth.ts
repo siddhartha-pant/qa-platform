@@ -56,14 +56,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async signIn({ user, account }) {
       if (account?.provider === "github") {
         await connectDB();
-        const existing = await User.findOne({ email: user.email });
+        const existing = await User.findOne({ email: user.email ?? undefined });
         if (!existing) {
           await User.create({
-            email: user.email,
+            email: user.email ?? undefined,
             username:
               user.name?.replace(/\s+/g, "").toLowerCase() ??
               `user_${Date.now()}`,
-            avatarUrl: user.image,
+            avatarUrl: user.image ?? undefined,
           });
         }
       }

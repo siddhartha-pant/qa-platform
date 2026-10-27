@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, use } from "react";
+import { useState, use, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -52,16 +52,20 @@ export default function QuestionDetailPage({
   const queryClient = useQueryClient();
   const [answers, setAnswers] = useState<Answer[]>([]);
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<{
+    question: Question;
+    answers: Answer[];
+  }>({
     queryKey: ["question", id],
     queryFn: () => fetchQuestionDetail(id),
-    onSuccess: (data: { question: Question; answers: Answer[] }) => {
-      setAnswers(data.answers);
-    },
-  } as Parameters<typeof useQuery>[0]);
+  });
 
-  const handleAnswerPosted = (newAnswer: Answer) => {
-    setAnswers((prev) => [...prev, newAnswer]);
+  useEffect(() => {
+    if (data?.answers) setAnswers(data.answers);
+  }, [data?.answers]);
+
+  const handleAnswerPosted = (newAnswer: unknown) => {
+    setAnswers((prev) => [...prev, newAnswer as Answer]);
     queryClient.invalidateQueries({ queryKey: ["question", id] });
   };
 
@@ -88,7 +92,7 @@ export default function QuestionDetailPage({
     );
   }
 
-  const question: Question = data?.question;
+  const question = data?.question as Question | undefined;
   const displayedAnswers: Answer[] = answers.length
     ? answers
     : (data?.answers ?? []);

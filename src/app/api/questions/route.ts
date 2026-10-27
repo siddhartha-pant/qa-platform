@@ -52,10 +52,10 @@ export async function GET(req: NextRequest) {
     const sort = searchParams.get("sort") ?? "newest";
     const tag = searchParams.get("tag");
 
-    const sortMap: Record<string, Record<string, number>> = {
-      newest: { createdAt: -1 },
-      "most-voted": { voteScore: -1 },
-      "most-answered": { answerCount: -1 },
+    const sortMap: Record<string, [string, 1 | -1][]> = {
+      newest: [["createdAt", -1]],
+      "most-voted": [["voteScore", -1]],
+      "most-answered": [["answerCount", -1]],
     };
     const sortQuery = sortMap[sort] ?? sortMap.newest;
 
