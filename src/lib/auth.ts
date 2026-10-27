@@ -1,5 +1,4 @@
 import NextAuth from "next-auth";
-import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { connectDB } from "./db";
@@ -7,10 +6,6 @@ import User from "@/models/User";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
-    GitHub({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    }),
     Credentials({
       name: "credentials",
       credentials: {
@@ -52,22 +47,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.id = token.id as string;
       }
       return session;
-    },
-    async signIn({ user, account }) {
-      if (account?.provider === "github") {
-        await connectDB();
-        const existing = await User.findOne({ email: user.email ?? undefined });
-        if (!existing) {
-          await User.create({
-            email: user.email ?? undefined,
-            username:
-              user.name?.replace(/\s+/g, "").toLowerCase() ??
-              `user_${Date.now()}`,
-            avatarUrl: user.image ?? undefined,
-          });
-        }
-      }
-      return true;
     },
   },
   pages: {
