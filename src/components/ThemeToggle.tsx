@@ -3,26 +3,20 @@
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme") as "light" | "dark" | null;
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    const initial = stored ?? (prefersDark ? "dark" : "light");
-    setTheme(initial);
-    document.documentElement.setAttribute("data-theme", initial);
-    if (initial === "dark") document.documentElement.classList.add("dark");
-    else document.documentElement.classList.remove("dark");
+    // Read the class already set by the inline script in layout.tsx
+    setIsDark(document.documentElement.classList.contains("dark"));
   }, []);
 
   const toggle = () => {
-    const next = theme === "light" ? "dark" : "light";
-    setTheme(next);
-    localStorage.setItem("theme", next);
-    document.documentElement.setAttribute("data-theme", next);
-    if (next === "dark") document.documentElement.classList.add("dark");
+    const next = !isDark;
+    setIsDark(next);
+    const theme = next ? "dark" : "light";
+    localStorage.setItem("theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+    if (next) document.documentElement.classList.add("dark");
     else document.documentElement.classList.remove("dark");
   };
 
@@ -30,9 +24,9 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label="Toggle dark mode"
-      className="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-white rounded transition-colors"
+      className="w-8 h-8 flex items-center justify-center text-stone-500 hover:text-stone-900 dark:hover:text-white rounded transition-colors"
     >
-      {theme === "dark" ? "☀️" : "🌙"}
+      {isDark ? "☀️" : "🌙"}
     </button>
   );
 }
