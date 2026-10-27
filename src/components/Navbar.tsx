@@ -9,11 +9,11 @@ export default function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <nav className="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 sticky top-0 z-50">
+    <nav className="border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-950 sticky top-0 z-50">
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link
           href="/"
-          className="font-bold text-lg text-zinc-900 dark:text-white"
+          className="font-bold text-lg text-stone-900 dark:text-white"
         >
           AskAnon
         </Link>
@@ -25,13 +25,13 @@ export default function Navbar() {
         <div className="flex items-center gap-4 text-sm">
           <Link
             href="/questions"
-            className="hidden sm:block text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+            className="hidden sm:block text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors"
           >
             Questions
           </Link>
           <Link
             href="/leaderboard"
-            className="hidden sm:block text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+            className="hidden sm:block text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors"
           >
             Leaderboard
           </Link>
@@ -41,19 +41,19 @@ export default function Navbar() {
             <>
               <Link
                 href="/questions/ask"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md transition-colors"
+                className="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1.5 rounded-md transition-colors"
               >
                 Ask Question
               </Link>
               <Link
                 href={`/user/${session.user?.id}`}
-                className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+                className="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors"
               >
                 {session.user?.name}
               </Link>
               <button
                 onClick={() => signOut()}
-                className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
+                className="text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors"
               >
                 Sign out
               </button>
@@ -62,13 +62,13 @@ export default function Navbar() {
             <>
               <Link
                 href="/login"
-                className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+                className="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors"
               >
                 Sign in
               </Link>
               <Link
                 href="/register"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md transition-colors"
+                className="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1.5 rounded-md transition-colors"
               >
                 Register
               </Link>

@@ -45,7 +45,7 @@ export default function RegisterPage() {
             <input
               {...register("email")}
               type="email"
-              className="w-full border border-zinc-200 dark:border-zinc-700 rounded-md px-3 py-2 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-stone-200 dark:border-stone-700 rounded-md px-3 py-2 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
             {errors.email && (
               <p className="text-red-500 text-xs mt-1">
@@ -58,7 +58,7 @@ export default function RegisterPage() {
             <label className="block text-sm font-medium mb-1">Username</label>
             <input
               {...register("username")}
-              className="w-full border border-zinc-200 dark:border-zinc-700 rounded-md px-3 py-2 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-stone-200 dark:border-stone-700 rounded-md px-3 py-2 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
             {errors.username && (
               <p className="text-red-500 text-xs mt-1">
@@ -72,7 +72,7 @@ export default function RegisterPage() {
             <input
               {...register("password")}
               type="password"
-              className="w-full border border-zinc-200 dark:border-zinc-700 rounded-md px-3 py-2 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-stone-200 dark:border-stone-700 rounded-md px-3 py-2 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
             {errors.password && (
               <p className="text-red-500 text-xs mt-1">
@@ -90,15 +90,15 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white py-2.5 rounded-md font-medium transition-colors"
+            className="w-full bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white py-2.5 rounded-md font-medium transition-colors"
           >
             {isSubmitting ? "Creating account..." : "Create account"}
           </button>
         </form>
 
-        <p className="text-center text-sm text-zinc-500 mt-6">
+        <p className="text-center text-sm text-stone-500 mt-6">
           Already have an account?{" "}
-          <Link href="/login" className="text-blue-600 hover:underline">
+          <Link href="/login" className="text-amber-600 hover:underline">
             Sign in
           </Link>
         </p>

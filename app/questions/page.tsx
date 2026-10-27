@@ -162,7 +162,7 @@ export default function QuestionsPage() {
                 setSelectedTag("");
                 setPage(1);
               }}
-              className={`text-left text-sm px-2 py-1 rounded transition-colors ${!selectedTag ? "bg-blue-600 text-white" : "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"}`}
+              className={`text-left text-sm px-2 py-1 rounded transition-colors ${!selectedTag ? "bg-amber-500 text-white" : "text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800"}`}
             >
               All tags
             </button>
@@ -173,7 +173,7 @@ export default function QuestionsPage() {
                   setSelectedTag(tag);
                   setPage(1);
                 }}
-                className={`text-left text-sm px-2 py-1 rounded transition-colors ${selectedTag === tag ? "bg-blue-600 text-white" : "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"}`}
+                className={`text-left text-sm px-2 py-1 rounded transition-colors ${selectedTag === tag ? "bg-amber-500 text-white" : "text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800"}`}
               >
                 {tag}
               </button>
@@ -191,7 +191,7 @@ export default function QuestionsPage() {
             </h1>
             <Link
               href="/questions/ask"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm transition-colors"
+              className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-md text-sm transition-colors"
             >
               Ask Question
             </Link>
@@ -206,7 +206,7 @@ export default function QuestionsPage() {
                   setSort(s);
                   setPage(1);
                 }}
-                className={`text-sm px-3 py-1.5 rounded border transition-colors ${sort === s ? "border-blue-500 text-blue-600 bg-blue-50 dark:bg-blue-950 dark:text-blue-400" : "border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-400"}`}
+                className={`text-sm px-3 py-1.5 rounded border transition-colors ${sort === s ? "border-amber-500 text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950" : "border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 hover:border-stone-400"}`}
               >
                 {s.replace("-", " ")}
               </button>
@@ -218,7 +218,7 @@ export default function QuestionsPage() {
               {[...Array(5)].map((_, i) => (
                 <div
                   key={i}
-                  className="h-32 bg-zinc-100 dark:bg-zinc-800 rounded-lg animate-pulse"
+                  className="h-32 bg-stone-100 dark:bg-stone-800 rounded-lg animate-pulse"
                 />
               ))}
             </div>
@@ -252,7 +252,7 @@ export default function QuestionsPage() {
                   <button
                     disabled={page === 1}
                     onClick={() => setPage((p) => p - 1)}
-                    className="px-3 py-1.5 text-sm rounded border border-zinc-200 dark:border-zinc-700 disabled:opacity-40 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                    className="px-3 py-1.5 text-sm rounded border border-stone-200 dark:border-stone-700 disabled:opacity-40 hover:bg-stone-100 dark:hover:bg-stone-800"
                   >
                     Previous
                   </button>
@@ -262,7 +262,7 @@ export default function QuestionsPage() {
                   <button
                     disabled={page === data.pagination.totalPages}
                     onClick={() => setPage((p) => p + 1)}
-                    className="px-3 py-1.5 text-sm rounded border border-zinc-200 dark:border-zinc-700 disabled:opacity-40 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                    className="px-3 py-1.5 text-sm rounded border border-stone-200 dark:border-stone-700 disabled:opacity-40 hover:bg-stone-100 dark:hover:bg-stone-800"
                   >
                     Next
                   </button>

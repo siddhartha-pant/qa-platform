@@ -25,11 +25,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100">
+      <body className="min-h-full flex flex-col bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100">
         <Providers>
           <Navbar />
           <main className="flex-1">{children}</main>
-          <footer className="border-t border-zinc-200 dark:border-zinc-800 py-6 text-center text-sm text-zinc-400">
+          <footer className="border-t border-stone-200 dark:border-stone-800 py-6 text-center text-sm text-stone-400">
             © 2026 AskAnon. Built with Next.js & MongoDB.
           </footer>
         </Providers>

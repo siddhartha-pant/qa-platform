@@ -51,7 +51,7 @@ export default function AnswerForm({
           {...register("content")}
           rows={6}
           placeholder="Write a detailed, helpful answer..."
-          className="w-full border border-zinc-200 dark:border-zinc-700 rounded-md px-3 py-2 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y"
+          className="w-full border border-stone-200 dark:border-stone-700 rounded-md px-3 py-2 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-y"
         />
         {errors.content && (
           <p className="text-red-500 text-sm mt-1">{errors.content.message}</p>
@@ -63,11 +63,11 @@ export default function AnswerForm({
           type="checkbox"
           id="answerAnonymous"
           {...register("isAnonymous")}
-          className="w-4 h-4 accent-blue-600"
+          className="w-4 h-4 accent-amber-500"
         />
         <label
           htmlFor="answerAnonymous"
-          className="text-sm text-zinc-600 dark:text-zinc-400"
+          className="text-sm text-stone-600 dark:text-stone-400"
         >
           Answer anonymously
         </label>
@@ -82,7 +82,7 @@ export default function AnswerForm({
       <button
         type="submit"
         disabled={isSubmitting}
-        className="bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white px-5 py-2 rounded-md font-medium transition-colors"
+        className="bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white px-5 py-2 rounded-md font-medium transition-colors"
       >
         {isSubmitting ? "Posting..." : "Post Answer"}
       </button>

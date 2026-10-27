@@ -44,7 +44,7 @@ export default function LeaderboardPage() {
           <button
             key={p}
             onClick={() => setPeriod(p)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${period === p ? "bg-blue-600 text-white" : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700"}`}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${period === p ? "bg-amber-500 text-white" : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700"}`}
           >
             {p.replace("-", " ")}
           </button>
@@ -65,7 +65,7 @@ export default function LeaderboardPage() {
           {data?.users?.map((user: LeaderboardUser, index: number) => (
             <div
               key={user._id}
-              className={`flex items-center gap-4 p-4 rounded-lg border transition-colors ${index < 3 ? "border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-950" : "border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900"}`}
+              className={`flex items-center gap-4 p-4 rounded-lg border transition-colors ${index < 3 ? "border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-950" : "border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900"}`}
             >
               <div
                 className={`w-8 text-center font-bold ${index < 3 ? MEDAL_COLORS[index] : "text-zinc-400"}`}
@@ -73,7 +73,7 @@ export default function LeaderboardPage() {
                 {index < 3 ? MEDALS[index] : index + 1}
               </div>
 
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold shrink-0">
+              <div className="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold shrink-0">
                 {user.avatarUrl ? (
                   <img
                     src={user.avatarUrl}
@@ -88,7 +88,7 @@ export default function LeaderboardPage() {
               <div className="flex-1">
                 <Link
                   href={`/user/${user._id}`}
-                  className="font-medium hover:text-blue-600 transition-colors"
+                  className="font-medium hover:text-amber-600 transition-colors"
                 >
                   {user.username}
                 </Link>

@@ -54,12 +54,12 @@ export default function VoteButton({
         onClick={() => vote(1)}
         disabled={loading}
         aria-label="Upvote"
-        className={`w-8 h-8 rounded flex items-center justify-center transition-colors ${userVote === 1 ? "text-orange-500" : "text-zinc-400 hover:text-orange-400"}`}
+        className={`w-8 h-8 rounded flex items-center justify-center transition-colors ${userVote === 1 ? "text-orange-500" : "text-stone-400 hover:text-orange-400"}`}
       >
         ▲
       </button>
       <span
-        className={`text-base font-semibold tabular-nums ${score > 0 ? "text-orange-500" : score < 0 ? "text-red-500" : "text-zinc-500"}`}
+        className={`text-base font-semibold tabular-nums ${score > 0 ? "text-orange-500" : score < 0 ? "text-red-500" : "text-stone-500"}`}
       >
         {score}
       </span>
@@ -67,7 +67,7 @@ export default function VoteButton({
         onClick={() => vote(-1)}
         disabled={loading}
         aria-label="Downvote"
-        className={`w-8 h-8 rounded flex items-center justify-center transition-colors ${userVote === -1 ? "text-blue-500" : "text-zinc-400 hover:text-blue-400"}`}
+        className={`w-8 h-8 rounded flex items-center justify-center transition-colors ${userVote === -1 ? "text-amber-600" : "text-stone-400 hover:text-amber-400"}`}
       >
         ▼
       </button>

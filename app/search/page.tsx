@@ -42,7 +42,7 @@ export default function SearchPage({
       </div>
 
       {!q && (
-        <div className="text-center text-zinc-500 py-12">
+        <div className="text-center text-stone-500 py-12">
           <p className="text-xl mb-2">Search for questions</p>
           <p className="text-sm">Find answers from the community</p>
         </div>
@@ -65,7 +65,7 @@ export default function SearchPage({
                   setSort(s);
                   setPage(1);
                 }}
-                className={`text-sm px-3 py-1.5 rounded border transition-colors ${sort === s ? "border-blue-500 text-blue-600 bg-blue-50 dark:bg-blue-950 dark:text-blue-400" : "border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-400"}`}
+                className={`text-sm px-3 py-1.5 rounded border transition-colors ${sort === s ? "border-amber-500 text-amber-600 bg-stone-100 dark:bg-stone-900 dark:text-amber-400" : "border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 hover:border-stone-400"}`}
               >
                 {s}
               </button>
@@ -77,7 +77,7 @@ export default function SearchPage({
               {[...Array(4)].map((_, i) => (
                 <div
                   key={i}
-                  className="h-32 bg-zinc-100 dark:bg-zinc-800 rounded-lg animate-pulse"
+                  className="h-32 bg-stone-100 dark:bg-stone-800 rounded-lg animate-pulse"
                 />
               ))}
             </div>
@@ -90,7 +90,7 @@ export default function SearchPage({
                   ),
                 )}
                 {data?.questions?.length === 0 && (
-                  <p className="text-zinc-500 text-center py-12">
+                  <p className="text-stone-500 text-center py-12">
                     No results found. Try different keywords.
                   </p>
                 )}
@@ -101,17 +101,17 @@ export default function SearchPage({
                   <button
                     disabled={page === 1}
                     onClick={() => setPage((p) => p - 1)}
-                    className="px-3 py-1.5 text-sm rounded border border-zinc-200 dark:border-zinc-700 disabled:opacity-40 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                    className="px-3 py-1.5 text-sm rounded border border-stone-200 dark:border-stone-700 disabled:opacity-40 hover:bg-stone-100 dark:hover:bg-stone-800"
                   >
                     Previous
                   </button>
-                  <span className="px-3 py-1.5 text-sm text-zinc-500">
+                  <span className="px-3 py-1.5 text-sm text-stone-500">
                     {page} / {data.pagination.totalPages}
                   </span>
                   <button
                     disabled={page === data.pagination.totalPages}
                     onClick={() => setPage((p) => p + 1)}
-                    className="px-3 py-1.5 text-sm rounded border border-zinc-200 dark:border-zinc-700 disabled:opacity-40 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                    className="px-3 py-1.5 text-sm rounded border border-stone-200 dark:border-stone-700 disabled:opacity-40 hover:bg-stone-100 dark:hover:bg-stone-800"
                   >
                     Next
                   </button>

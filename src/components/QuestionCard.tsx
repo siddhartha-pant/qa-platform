@@ -42,7 +42,7 @@ export default function QuestionCard({
 
   return (
     <>
-      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-5 hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
+      <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg p-5 hover:border-amber-300 dark:hover:border-amber-700 transition-colors">
         <div className="flex gap-4">
           <div className="flex flex-col items-center gap-2 min-w-[60px] text-center text-sm text-zinc-500">
             <div>
@@ -71,14 +71,14 @@ export default function QuestionCard({
             {isDefault ? (
               <button
                 onClick={() => setExpanded(true)}
-                className="text-blue-600 dark:text-blue-400 hover:underline font-medium text-lg leading-snug text-left"
+                className="text-amber-700 dark:text-amber-400 hover:underline font-medium text-lg leading-snug text-left"
               >
                 {question.title}
               </button>
             ) : (
               <Link
                 href={`/questions/${question._id}`}
-                className="text-blue-600 dark:text-blue-400 hover:underline font-medium text-lg leading-snug"
+                className="text-amber-700 dark:text-amber-400 hover:underline font-medium text-lg leading-snug"
               >
                 {question.title}
               </Link>
@@ -91,7 +91,7 @@ export default function QuestionCard({
                 <Link
                   key={tag}
                   href={`/questions?tag=${tag}`}
-                  className="bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs px-2 py-0.5 rounded hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
+                  className="bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 text-xs px-2 py-0.5 rounded hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
                 >
                   {tag}
                 </Link>
@@ -105,7 +105,7 @@ export default function QuestionCard({
                 ) : (
                   <Link
                     href={`/user/${question.authorId._id}`}
-                    className="text-blue-500 hover:underline"
+                    className="text-amber-600 hover:underline"
                   >
                     {question.authorId.username}
                   </Link>
@@ -150,7 +150,7 @@ export default function QuestionCard({
               {question.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs px-2 py-0.5 rounded"
+                  className="bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 text-xs px-2 py-0.5 rounded"
                 >
                   {tag}
                 </span>

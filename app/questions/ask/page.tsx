@@ -54,7 +54,7 @@ export default function AskQuestionPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
       <h1 className="text-3xl font-bold mb-2">Ask a Question</h1>
-      <p className="text-zinc-500 mb-8">
+      <p className="text-stone-500 mb-8">
         Be specific. Provide enough context for a great answer.
       </p>
 
@@ -67,7 +67,7 @@ export default function AskQuestionPage() {
           <input
             {...register("title")}
             placeholder="What is your question? Be specific."
-            className="w-full border border-zinc-200 dark:border-zinc-700 rounded-md px-3 py-2 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-stone-200 dark:border-stone-700 rounded-md px-3 py-2 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
           {errors.title && (
             <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
@@ -83,7 +83,7 @@ export default function AskQuestionPage() {
             {...register("description")}
             rows={8}
             placeholder="Provide all the details needed to understand your question."
-            className="w-full border border-zinc-200 dark:border-zinc-700 rounded-md px-3 py-2 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y"
+            className="w-full border border-stone-200 dark:border-stone-700 rounded-md px-3 py-2 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-y"
           />
           {errors.description && (
             <p className="text-red-500 text-sm mt-1">
@@ -96,7 +96,7 @@ export default function AskQuestionPage() {
         <div>
           <label className="block text-sm font-medium mb-1">
             Tags <span className="text-red-500">*</span>
-            <span className="text-zinc-400 font-normal ml-1">(up to 5)</span>
+            <span className="text-stone-400 font-normal ml-1">(up to 5)</span>
           </label>
           <div className="flex gap-2">
             <input
@@ -109,12 +109,12 @@ export default function AskQuestionPage() {
                 }
               }}
               placeholder="Add a tag and press Enter"
-              className="flex-1 border border-zinc-200 dark:border-zinc-700 rounded-md px-3 py-2 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 border border-stone-200 dark:border-stone-700 rounded-md px-3 py-2 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
             <button
               type="button"
               onClick={addTag}
-              className="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-md hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-sm"
+              className="px-4 py-2 bg-stone-100 dark:bg-stone-800 rounded-md hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-sm"
             >
               Add
             </button>
@@ -124,7 +124,7 @@ export default function AskQuestionPage() {
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="flex items-center gap-1 bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-sm px-2 py-0.5 rounded"
+                  className="flex items-center gap-1 bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-400 text-sm px-2 py-0.5 rounded"
                 >
                   {tag}
                   <button
@@ -149,11 +149,11 @@ export default function AskQuestionPage() {
             type="checkbox"
             id="isAnonymous"
             {...register("isAnonymous")}
-            className="w-4 h-4 accent-blue-600"
+            className="w-4 h-4 accent-amber-500"
           />
           <label htmlFor="isAnonymous" className="text-sm">
             Post anonymously{" "}
-            <span className="text-zinc-400">
+            <span className="text-stone-400">
               (your username will be hidden)
             </span>
           </label>
@@ -168,7 +168,7 @@ export default function AskQuestionPage() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white px-6 py-2.5 rounded-md font-medium transition-colors"
+          className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white px-6 py-2.5 rounded-md font-medium transition-colors"
         >
           {isSubmitting ? "Posting..." : "Post Question"}
         </button>

@@ -86,8 +86,8 @@ export default function QuestionDetailPage({
   if (isLoading) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-10 space-y-4">
-        <div className="h-10 bg-zinc-100 dark:bg-zinc-800 rounded animate-pulse" />
-        <div className="h-40 bg-zinc-100 dark:bg-zinc-800 rounded animate-pulse" />
+        <div className="h-10 bg-stone-100 dark:bg-stone-800 rounded animate-pulse" />
+        <div className="h-40 bg-stone-100 dark:bg-stone-800 rounded animate-pulse" />
       </div>
     );
   }
@@ -99,7 +99,7 @@ export default function QuestionDetailPage({
 
   if (!question)
     return (
-      <div className="max-w-3xl mx-auto px-4 py-10 text-zinc-500">
+      <div className="max-w-3xl mx-auto px-4 py-10 text-stone-500">
         Question not found.
       </div>
     );
@@ -111,13 +111,13 @@ export default function QuestionDetailPage({
         <h1 className="text-2xl font-bold mb-2 leading-snug">
           {question.title}
         </h1>
-        <div className="flex flex-wrap gap-3 text-sm text-zinc-400 mb-4">
+        <div className="flex flex-wrap gap-3 text-sm text-stone-400 mb-4">
           <span>Asked {timeAgo(question.createdAt)}</span>
           <span>Viewed {question.viewCount} times</span>
           <span>{question.voteScore} votes</span>
         </div>
 
-        <div className="prose dark:prose-invert max-w-none text-zinc-700 dark:text-zinc-300 whitespace-pre-wrap mb-4">
+        <div className="prose dark:prose-invert max-w-none text-stone-700 dark:text-stone-300 whitespace-pre-wrap mb-4">
           {question.description}
         </div>
 
@@ -126,21 +126,21 @@ export default function QuestionDetailPage({
             <Link
               key={tag}
               href={`/questions?tag=${tag}`}
-              className="bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs px-2 py-0.5 rounded hover:bg-blue-100 transition-colors"
+              className="bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 text-xs px-2 py-0.5 rounded hover:bg-stone-200 transition-colors"
             >
               {tag}
             </Link>
           ))}
         </div>
 
-        <div className="text-xs text-zinc-400">
+        <div className="text-xs text-stone-400">
           Asked by{" "}
           {question.isAnonymous ? (
-            <span className="text-zinc-500">Anonymous</span>
+            <span className="text-stone-500">Anonymous</span>
           ) : (
             <Link
               href={`/user/${question.authorId._id}`}
-              className="text-blue-500 hover:underline"
+              className="text-amber-600 hover:underline"
             >
               {question.authorId.username}
             </Link>
@@ -148,7 +148,7 @@ export default function QuestionDetailPage({
         </div>
       </div>
 
-      <hr className="border-zinc-200 dark:border-zinc-800 mb-6" />
+      <hr className="border-stone-200 dark:border-stone-800 mb-6" />
 
       {/* Answers */}
       <h2 className="text-xl font-semibold mb-4">
@@ -160,24 +160,24 @@ export default function QuestionDetailPage({
         {displayedAnswers.map((answer) => (
           <div
             key={answer._id}
-            className={`p-5 rounded-lg border ${answer.isBestAnswer ? "border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-950" : "border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900"}`}
+            className={`p-5 rounded-lg border ${answer.isBestAnswer ? "border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-950" : "border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900"}`}
           >
             {answer.isBestAnswer && (
               <div className="flex items-center gap-1.5 text-green-600 dark:text-green-400 text-sm font-medium mb-3">
                 <span>✓</span> Best Answer
               </div>
             )}
-            <div className="text-zinc-700 dark:text-zinc-300 whitespace-pre-wrap mb-4">
+            <div className="text-stone-700 dark:text-stone-300 whitespace-pre-wrap mb-4">
               {answer.content}
             </div>
-            <div className="flex items-center justify-between text-xs text-zinc-400">
+            <div className="flex items-center justify-between text-xs text-stone-400">
               <span>
                 {answer.isAnonymous ? (
                   "Anonymous"
                 ) : (
                   <Link
                     href={`/user/${answer.authorId._id}`}
-                    className="text-blue-500 hover:underline"
+                    className="text-amber-600 hover:underline"
                   >
                     {answer.authorId.username}
                   </Link>
@@ -199,15 +199,15 @@ export default function QuestionDetailPage({
 
       {/* Answer form */}
       {session ? (
-        <div className="border-t border-zinc-200 dark:border-zinc-800 pt-6">
+        <div className="border-t border-stone-200 dark:border-stone-800 pt-6">
           <AnswerForm questionId={id} onAnswerPosted={handleAnswerPosted} />
         </div>
       ) : (
-        <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 text-center">
-          <p className="text-zinc-500 mb-3">Sign in to post an answer</p>
+        <div className="border border-stone-200 dark:border-stone-800 rounded-lg p-6 text-center">
+          <p className="text-stone-500 mb-3">Sign in to post an answer</p>
           <Link
             href="/login"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm transition-colors"
+            className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-md text-sm transition-colors"
           >
             Sign in
           </Link>
