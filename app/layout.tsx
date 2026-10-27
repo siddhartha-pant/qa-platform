@@ -34,8 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           (function() {
             try {
               var stored = localStorage.getItem('theme');
-              var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-              var isDark = stored === 'dark' || (!stored && prefersDark);
+              var isDark = stored === 'dark';
               if (isDark) {
                 document.documentElement.classList.add('dark');
                 document.documentElement.setAttribute('data-theme', 'dark');
