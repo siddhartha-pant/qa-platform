@@ -5,9 +5,11 @@ export default function HomePage() {
     <div className="max-w-5xl mx-auto px-4 py-16">
       {/* Hero */}
       <div className="text-center mb-16">
-        <h1 className="text-5xl font-bold mb-4 text-stone-900 dark:text-stone-100">
-          Ask Anonymously.{" "}
-          <span className="text-amber-600 dark:text-amber-400">
+        <h1 className="text-5xl font-bold mb-4">
+          <span className="text-stone-900 dark:text-white">
+            Ask Anonymously.
+          </span>{" "}
+          <span className="text-amber-500 dark:text-amber-400">
             Answer Honestly.
           </span>
         </h1>
@@ -58,8 +60,12 @@ export default function HomePage() {
             className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-xl p-6"
           >
             <div className="text-3xl mb-3">{icon}</div>
-            <h3 className="text-lg font-semibold mb-2">{title}</h3>
-            <p className="text-stone-500 text-sm">{description}</p>
+            <h3 className="text-lg font-semibold mb-2 text-stone-800 dark:text-stone-100">
+              {title}
+            </h3>
+            <p className="text-stone-500 dark:text-stone-400 text-sm">
+              {description}
+            </p>
           </div>
         ))}
       </div>
